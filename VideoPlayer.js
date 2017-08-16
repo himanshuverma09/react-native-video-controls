@@ -31,6 +31,7 @@ export default class VideoPlayer extends Component {
             paused: this.props.paused || false,
             muted: this.props.muted || false,
             volume: this.props.volume || 1,
+            showTopControl: this.props.showTopControl || true,
             rate: this.props.rate || 1,
             // Controls
             isFullscreen: isFullscreen,
@@ -1055,7 +1056,11 @@ export default class VideoPlayer extends Component {
                         source={ this.props.source }
                     />
                     { this.renderError() }
-                    { this.renderTopControls() }
+                    { this.state.showTopControl ?
+                        this.renderTopControls() 
+                        :
+                        null
+                    }
                     { this.renderLoader() }
                     { this.renderBottomControls() }
                 </View>
